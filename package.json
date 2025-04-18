@@ -1,0 +1,15 @@
+{
+  "name": "scrimbot",
+  "version": "1.0.0",
+  "description": "A bot that organizes custom league of legends games",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Wagner",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "mysql": "^2.16.0"
+  }
+}
