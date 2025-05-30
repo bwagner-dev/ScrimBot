@@ -3,15 +3,15 @@ var client = new discord.Client();
 var sql = require('mysql');
 var userCount = 0;
 var users = [];
-var voiceChatOne = "297863449739001857";
-var voiceChatTwo = "514623214903623680";
+var voiceChatOne = "<voiceChannelID1>";
+var voiceChatTwo = "<voiceChannelID2>";
 var possibleRoles = ["Top", "Mid", "ADC", "Jungle", "Support"];
 
 var connection = sql.createConnection({
 	host: '<hostIP>',
-	user: 'user',
-	password: 'main',
-	database: 'LoL'
+	user: '<username>',
+	password: '<password>',
+	database: '<databaseName>'
 });
 
 connection.connect();
@@ -193,7 +193,7 @@ function noticeReady() {
 			client.channels.find("name", "botspam").send(`${notReady}, please type "!ready" so the game can start.`);
 		}
 		else {
-			client.channels.find("name", "botspam").send(`Everyone is already ready you actual dumb piece of-`);
+			client.channels.find("name", "botspam").send(`Everyone is already ready.`);
 		}
 	}
 	else {
@@ -221,16 +221,16 @@ function noticeVoice() {
 			client.channels.find("name", "botspam").send(`${notInVoice}, please join the "Waiting Room" voice channel so the game can start.`);
 		}
 		else {
-			client.channels.find("name", "botspam").send(`Everyone is already in the "Waiting Room" voice channel you actual dumb piece of-`);
+			client.channels.find("name", "botspam").send(`Everyone is already in the "Waiting Room" voice channel.`);
 		}
 	}
 }
 
 function showHelp() {
 	client.channels.find("name", "botspam").send("\`\`\`" +
-		"\nScrimBot is a bot created specifically for the LoL Customs Server." +
+		"\nScrimBot is a bot created specifically for the League of Legends Customs Servers." +
 		"\nIts function is to organize teams, start and end games, and store user data for an overall unique experience." +
-		"\nPlease report any glitches or bugs to @Align." +
+		"\nPlease report any glitches or bugs to @<user>." +
 		"\n" +
 		"\n!roles show <@discord user>  || Shows the roles of the mentioned user" +
 		"\n!roles show all              || Shows all users from the database and their roles" +
@@ -280,7 +280,7 @@ function myRoles(message, args) {
 								if (err) {
 									throw err;
 								}
-								client.channels.get("505213134835810325").send(`Congrats! You're now in the database ${message.member}.`);
+								client.channels.get("<channel>").send(`Congrats! You're now in the database ${message.member}.`);
 							});
 					}
 					else if (result.length === 1) {
@@ -290,14 +290,14 @@ function myRoles(message, args) {
 								if (err) {
 									throw err;
 								}
-								client.channels.get("505213134835810325").send(`Your roles have been updated, ${message.member}.`);
+								client.channels.get("<channel>").send(`Your roles have been updated, ${message.member}.`);
 							});
 					}
 				}
 			)
 		}
 		else {
-			client.channels.get("505213134835810325").send(`Please use the available roles: Top, Mid, ADC, Jungle, Support, ${message.member}.`);
+			client.channels.get("<channel>").send(`Please use the available roles: Top, Mid, ADC, Jungle, Support, ${message.member}.`);
 		}
 	}
 	else {
@@ -312,7 +312,7 @@ function deleteAllRoles() {
 			if (err) {
 				throw err;
 			}
-			client.channels.get("505213134835810325").send("Everything was deleted!");
+			client.channels.get("<channel>").send("Everything was deleted!");
 		});
 }
 
